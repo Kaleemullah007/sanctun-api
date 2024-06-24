@@ -6,6 +6,7 @@ use App\Common\Responses;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\updateProfile;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -49,4 +50,12 @@ class AuthController extends Controller
         return Responses::success('Successfully logout');
 
    }
+
+ public function update(updateProfile $request){
+
+    $user = $request->user();
+    $user->update($request->validated());
+    $user=  new UserResource($user);
+    return Responses::success('user details',$user);
+ }   
 }

@@ -16,6 +16,7 @@ Route::middleware('auth:sanctum')->group(function(){
     
     Route::post('logout',[AuthController::class,'logout'])->name('logout');
     Route::get('products',[ProductController::class,'index'])->name('products');
+    Route::post('update-profile',[AuthController::class,'update'])->name('update-profile');
 
 });
 
